@@ -1,0 +1,5 @@
+SNR for size 15 (3 pulses) is 257.113974 (was -9.838446 without inverse)
+SNR for size 23 (5 pulses) is 261.084348 (was -10.734683 without inverse)
+SNR for size 50 (3 pulses) is 259.258313 (was -10.184811 without inverse)
+SNR for size 80 (1 pulses) is 271.282011 (was -6.022436 without inverse)
+PASS celt/tests/test_unit_rotation (exit status: 0)

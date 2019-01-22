@@ -1,0 +1,9 @@
+nfft=240 inverse=0,snr = 135.830064
+nfft=240 inverse=1,snr = 137.233035
+nfft=480 inverse=0,snr = 136.565422
+nfft=480 inverse=1,snr = 136.860128
+nfft=960 inverse=0,snr = 135.641389
+nfft=960 inverse=1,snr = 136.346539
+nfft=1920 inverse=0,snr = 133.171776
+nfft=1920 inverse=1,snr = 136.398386
+PASS celt/tests/test_unit_mdct (exit status: 0)
