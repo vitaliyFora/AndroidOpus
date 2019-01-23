@@ -9,11 +9,28 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            cmake {
+                /* This command line argument for C compiler indicates that CPUs our target devices
+                   don't have NEON instructions set: it's made for simplicity.
+                   It locates here, and don't in CMakeLists.txt, because I decide
+                   to divide specific command-line arguments for Opus and this*/
+                arguments "-DANDROID_ARM_NEON=FALSE"
+                cppFlags ""
+            }
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
         }
     }
 }
