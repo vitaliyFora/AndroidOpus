@@ -118,6 +118,7 @@ set(SILK_SOURCES
         "${OPUS_DIR_PATH}/silk/process_NLSFs.c"
         "${OPUS_DIR_PATH}/silk/stereo_LR_to_MS.c"
         "${OPUS_DIR_PATH}/silk/stereo_MS_to_LR.c"
+        "${OPUS_DIR_PATH}/silk/stereo_quant_pred.c"
         "${OPUS_DIR_PATH}/silk/check_control_input.c"
         "${OPUS_DIR_PATH}/silk/control_SNR.c"
         "${OPUS_DIR_PATH}/silk/init_encoder.c"
@@ -389,7 +390,7 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        ${NATIVE_SOURCES_PATH}/jni_opus.c)
+        ${NATIVE_SOURCES_PATH}/jniopus.c)
 
 # Here we specify directories where compiler need to seek our headers
 include_directories(${OPUS_HEADERS_DIRS})
@@ -398,10 +399,18 @@ include_directories(${OPUS_HEADERS_DIRS})
 # can link multiple libraries, such as libraries you define in the
 # build script, prebuilt third-party libraries, or system libraries.
 
+find_library( # Sets the name of the path variable.
+        log-lib
+
+        # Specifies the name of the NDK library that
+        # you want CMake to locate.
+        log )
+
 target_link_libraries(
         # Specifies the target library.
         jniopus
-        # Specifies the library that should be linked to our target
-        opus)
+
+        # Specifies the libraries that should be linked to our target
+        opus ${log-lib})
 
 
