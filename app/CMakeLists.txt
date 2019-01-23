@@ -354,9 +354,11 @@ set(OPUS_HEADERS_DIRS
         ${OPUS_DIR_PATH}/celt/mips)
 
 set(FIXED_POINT "1")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DUSE_ALLOCA -DOPUS_BUILD -DANDROID_ARM_NEON=FALSE")
 
+# Set required C flags for opus
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DUSE_ALLOCA -DOPUS_BUILD")
 
+# Add certain sources and C flags if we want to use fixed point or float
 if (${FIXED_POINT})
     set(SILK_SOURCES ${SILK_SOURCES} ${SILK_SOURCES_FIXED})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DFIXED_POINT=1 -DDISABLE_FLOAT_API")
@@ -370,12 +372,14 @@ endif ()
 add_library( # Sets the name of the library.
         opus
 
-        # Sets the library as a shared library.
+        # Sets the library as a static library.
         STATIC
 
         # Provides a relative path to your source file(s).
         # Associated headers in the same location as their source
         # file are automatically included.
+        # We include relative path to header files, because some of them
+        # not in the same directory as sources.
         ${OPUS_SOURCES} ${CELT_SOURCES} ${SILK_SOURCES} ${OPUS_HEADEARS})
 
 add_library( # Sets the name of the library.
@@ -385,18 +389,19 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        # Associated headers in the same location as their source
-        # file are automatically included.
         ${NATIVE_SOURCES_PATH}/jni_opus.c)
 
+# Here we specify directories where compiler need to seek our headers
 include_directories(${OPUS_HEADERS_DIRS})
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in the
 # build script, prebuilt third-party libraries, or system libraries.
 
-target_link_libraries( # Specifies the target library.
+target_link_libraries(
+        # Specifies the target library.
         jniopus
+        # Specifies the library that should be linked to our target
         opus)
 
 
