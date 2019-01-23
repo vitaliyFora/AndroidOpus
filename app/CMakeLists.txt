@@ -19,11 +19,12 @@ set(OPUS_SOURCES
         "${OPUS_DIR_PATH}/src/repacketizer.c"
         "${OPUS_DIR_PATH}/src/opus_projection_encoder.c"
         "${OPUS_DIR_PATH}/src/opus_projection_decoder.c"
-        "${OPUS_DIR_PATH}/src/mapping_matrix.c"
+        "${OPUS_DIR_PATH}/src/mapping_matrix.c")
+
+set(OPUS_SOURCES_FLOAT
         "${OPUS_DIR_PATH}/src/analysis.c"
         "${OPUS_DIR_PATH}/src/mlp.c"
-        "${OPUS_DIR_PATH}/src/mlp_data.c"
-        )
+        "${OPUS_DIR_PATH}/src/mlp_data.c")
 
 set(CELT_SOURCES
         "${OPUS_DIR_PATH}/celt/bands.c"
@@ -43,23 +44,38 @@ set(CELT_SOURCES
         "${OPUS_DIR_PATH}/celt/celt_lpc.c"
         "${OPUS_DIR_PATH}/celt/quant_bands.c"
         "${OPUS_DIR_PATH}/celt/rate.c"
-        "${OPUS_DIR_PATH}/celt/vq.c"
+        "${OPUS_DIR_PATH}/celt/vq.c")
+
+set(CELT_SOURCES_SSE
         "${OPUS_DIR_PATH}/celt/x86/x86cpu.c"
         "${OPUS_DIR_PATH}/celt/x86/x86_celt_map.c"
-        "${OPUS_DIR_PATH}/celt/x86/pitch_sse.c"
+        "${OPUS_DIR_PATH}/celt/x86/pitch_sse.c")
+
+set(CELT_SOURCES_SSE2
         "${OPUS_DIR_PATH}/celt/x86/pitch_sse2.c"
-        "${OPUS_DIR_PATH}/celt/x86/vq_sse2.c"
+        "${OPUS_DIR_PATH}/celt/x86/vq_sse2.c")
+
+set(CELT_SOURCES_SSE4_1
         "${OPUS_DIR_PATH}/celt/x86/celt_lpc_sse4_1.c"
-        "${OPUS_DIR_PATH}/celt/x86/pitch_sse4_1.c"
+        "${OPUS_DIR_PATH}/celt/x86/pitch_sse4_1.c")
+
+set(CELT_SOURCES_ARM
         "${OPUS_DIR_PATH}/celt/arm/armcpu.c"
-        "${OPUS_DIR_PATH}/celt/arm/arm_celt_map.c"
-        "${OPUS_DIR_PATH}/celt/arm/celt_pitch_xcorr_arm.s"
-        "${OPUS_DIR_PATH}/celt/arm/armopts.s.in"
+        "${OPUS_DIR_PATH}/celt/arm/arm_celt_map.c")
+
+set(CELT_SOURCES_ARM_ASM
+        "${OPUS_DIR_PATH}/celt/arm/celt_pitch_xcorr_arm.s")
+
+set(CELT_AM_SOURCES_ARM_ASM
+        "${OPUS_DIR_PATH}/celt/arm/armopts.s.in")
+
+set(CELT_SOURCES_ARM_NEON_INTR
         "${OPUS_DIR_PATH}/celt/arm/celt_neon_intr.c"
-        "${OPUS_DIR_PATH}/celt/arm/pitch_neon_intr.c"
+        "${OPUS_DIR_PATH}/celt/arm/pitch_neon_intr.c")
+
+set(CELT_SOURCES_ARM_NE10
         "${OPUS_DIR_PATH}/celt/arm/celt_fft_ne10.c"
         "${OPUS_DIR_PATH}/celt/arm/celt_mdct_ne10.c")
-
 
 set(SILK_SOURCES
         "${OPUS_DIR_PATH}/silk/CNG.c"
@@ -138,17 +154,23 @@ set(SILK_SOURCES
         "${OPUS_DIR_PATH}/silk/stereo_encode_pred.c"
         "${OPUS_DIR_PATH}/silk/stereo_find_predictor.c"
         "${OPUS_DIR_PATH}/silk/LPC_fit.c"
-        "${OPUS_DIR_PATH}/silk/stereo_encode_pred.c"
+        "${OPUS_DIR_PATH}/silk/stereo_encode_pred.c")
+
+set(SILK_SOURCES_SSE4_1
         "${OPUS_DIR_PATH}/silk/x86/NSQ_sse4_1.c"
         "${OPUS_DIR_PATH}/silk/x86/NSQ_del_dec_sse4_1.c"
         "${OPUS_DIR_PATH}/silk/x86/x86_silk_map.c"
         "${OPUS_DIR_PATH}/silk/x86/VAD_sse4_1.c"
-        "${OPUS_DIR_PATH}/silk/x86/VQ_WMat_EC_sse4_1.c"
+        "${OPUS_DIR_PATH}/silk/x86/VQ_WMat_EC_sse4_1.c")
+
+set(SILK_SOURCES_ARM_NEON_INTR
         "${OPUS_DIR_PATH}/silk/arm/arm_silk_map.c"
         "${OPUS_DIR_PATH}/silk/arm/biquad_alt_neon_intr.c"
         "${OPUS_DIR_PATH}/silk/arm/LPC_inv_pred_gain_neon_intr.c"
         "${OPUS_DIR_PATH}/silk/arm/NSQ_del_dec_neon_intr.c"
-        "${OPUS_DIR_PATH}/silk/arm/NSQ_neon.c"
+        "${OPUS_DIR_PATH}/silk/arm/NSQ_neon.c")
+
+set(SILK_SOURCES_FIXED
         "${OPUS_DIR_PATH}/silk/fixed/LTP_analysis_filter_FIX.c"
         "${OPUS_DIR_PATH}/silk/fixed/LTP_scale_ctrl_FIX.c"
         "${OPUS_DIR_PATH}/silk/fixed/corrMatrix_FIX.c"
@@ -171,10 +193,16 @@ set(SILK_SOURCES
         "${OPUS_DIR_PATH}/silk/fixed/pitch_analysis_core_FIX.c"
         "${OPUS_DIR_PATH}/silk/fixed/vector_ops_FIX.c"
         "${OPUS_DIR_PATH}/silk/fixed/schur64_FIX.c"
-        "${OPUS_DIR_PATH}/silk/fixed/schur_FIX.c"
+        "${OPUS_DIR_PATH}/silk/fixed/schur_FIX.c")
+
+set(SILK_SOURCES_FIXED_SSE4_1
         "${OPUS_DIR_PATH}/silk/fixed/x86/vector_ops_FIX_sse4_1.c"
-        "${OPUS_DIR_PATH}/silk/fixed/x86/burg_modified_FIX_sse4_1.c"
-        "${OPUS_DIR_PATH}/silk/fixed/arm/warped_autocorrelation_FIX_neon_intr.c"
+        "${OPUS_DIR_PATH}/silk/fixed/x86/burg_modified_FIX_sse4_1.c")
+
+set(SILK_SOURCES_FIXED_ARM_NEON_INTR
+        "${OPUS_DIR_PATH}/silk/fixed/arm/warped_autocorrelation_FIX_neon_intr.c")
+
+set(SILK_SOURCES_FLOAT
         "${OPUS_DIR_PATH}/silk/float/apply_sine_window_FLP.c"
         "${OPUS_DIR_PATH}/silk/float/corrMatrix_FLP.c"
         "${OPUS_DIR_PATH}/silk/float/encode_frame_FLP.c"
@@ -309,6 +337,7 @@ set(OPUS_HEADEARS
         ${OPUS_DIR_PATH}/silk/mips/sigproc_fix_mipsr1.h)
 
 set(OPUS_HEADERS_DIRS
+        ${OPUS_DIR_PATH}
         ${OPUS_DIR_PATH}/include
         ${OPUS_DIR_PATH}/src
         ${OPUS_DIR_PATH}/silk
@@ -319,17 +348,30 @@ set(OPUS_HEADERS_DIRS
         ${OPUS_DIR_PATH}/silk/fixed/mips
         ${OPUS_DIR_PATH}/silk/float
         ${OPUS_DIR_PATH}/silk/mips
+        ${OPUS_DIR_PATH}/celt
         ${OPUS_DIR_PATH}/celt/x86
         ${OPUS_DIR_PATH}/celt/arm
         ${OPUS_DIR_PATH}/celt/mips)
 
-include_directories(${OPUS_HEADERS_DIRS})
+set(FIXED_POINT "1")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DUSE_ALLOCA -DOPUS_BUILD -DANDROID_ARM_NEON=FALSE")
+
+
+if (${FIXED_POINT})
+    set(SILK_SOURCES ${SILK_SOURCES} ${SILK_SOURCES_FIXED})
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DFIXED_POINT=1 -DDISABLE_FLOAT_API")
+else ()
+    set(SILK_SOURCES ${SILK_SOURCES} ${SILK_SOURCES_FLOAT})
+    set(OPUS_SOURCES ${OPUS_SOURCES} ${OPUS_SOURCES_FLOAT})
+endif ()
+
+
 
 add_library( # Sets the name of the library.
         opus
 
         # Sets the library as a shared library.
-        SHARED
+        STATIC
 
         # Provides a relative path to your source file(s).
         # Associated headers in the same location as their source
@@ -345,7 +387,9 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         # Associated headers in the same location as their source
         # file are automatically included.
-        ${NATIVE_SOURCES_PATH}/jni_opus.c )
+        ${NATIVE_SOURCES_PATH}/jni_opus.c)
+
+include_directories(${OPUS_HEADERS_DIRS})
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in the
@@ -353,9 +397,6 @@ add_library( # Sets the name of the library.
 
 target_link_libraries( # Specifies the target library.
         jniopus
-
-        # Links the target library to the log library
-        # included in the NDK.
         opus)
 
 
