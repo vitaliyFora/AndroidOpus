@@ -20,6 +20,10 @@ android {
                 cppFlags ""
             }
         }
+         // Uncomment these lines if you want to build only for these ABIs
+//        ndk {
+//            abiFilters "arm64-v8a", "armeabi-v7a"
+//        }
     }
     buildTypes {
         release {
