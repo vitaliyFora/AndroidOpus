@@ -334,14 +334,14 @@ endif ()
 
 ### Все ссылки
 
-Opus codec http://opus-codec.org/
+Opus codec [http://opus-codec.org/](http://opus-codec.org/)
 
-Установка NDK https://developer.android.com/ndk/guides/
+Установка NDK [https://developer.android.com/ndk/guides/](https://developer.android.com/ndk/guides/)
 
-JNI для Android https://developer.android.com/training/articles/perf-jni
+JNI для Android [https://developer.android.com/training/articles/perf-jni](https://developer.android.com/training/articles/perf-jni)
 
-Android документация по CMake https://developer.android.com/studio/projects/add-native-code#create-cmake-script
+Android документация по CMake [https://developer.android.com/studio/projects/add-native-code#create-cmake-script](https://developer.android.com/studio/projects/add-native-code#create-cmake-script)
 
-Разные ABI на Android https://developer.android.com/ndk/guides/abis
+Разные ABI на Android [https://developer.android.com/ndk/guides/abis](https://developer.android.com/ndk/guides/abis)
 
 Репозиторий с проектом из статьи https://github.com/vitaliyFora/AndroidOpus
